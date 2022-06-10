@@ -10,10 +10,10 @@ function Home() {
 
                 <div id="main-wrapper">
                     <Navbar />
-            
+
                     <Banner />
-                    <Content/>
-                   
+                    <Content />
+
 
 
                 </div>

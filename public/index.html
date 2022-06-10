@@ -10,7 +10,7 @@
       content="Web site created using create-react-app"
     /> -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <base href="/" />
+    <!-- <base href="/" /> -->
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!-- <link rel="stylesheet" href="./css/styles.css" /> -->
@@ -205,11 +205,15 @@
     .owl-carousel .next-carousel:hover {
       background-position: -24px -53px;
     }
+
+    .owl-carousel .owl-nav.disabled{
+      display: block !important;
+    }
     .owl-next,
     .owl-prev {
       padding: 14px !important;
-      width: 4vw !important;
-      height: 4vw !important;
+      width: 3vw !important;
+      height: 3vw !important;
       cursor: pointer !important;
       border: none !important;
       border-radius: 5vw !important;
@@ -223,6 +227,15 @@
       display: inline-block;
     }
     /* Owl carusole css ens */
+
+    /* offer css start */
+    .propertyWidth{
+      width: 370px !important;
+    }
+    .appliances-center{
+      width: 240% !important;
+    }
+    /* offer css end */
   </style>
   <body>
     <!-- <div class="preloader"></div> -->

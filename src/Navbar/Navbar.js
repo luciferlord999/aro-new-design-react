@@ -5,14 +5,14 @@ function Navbar() {
 
 
 
-   
 
 
-    const changeHeader =()=>{
-        if(window.scrollY >=50){
+
+    const changeHeader = () => {
+        if (window.scrollY >= 50) {
             setNavbar(true)
         }
-        else{
+        else {
             setNavbar(false)
         }
     }
@@ -22,15 +22,15 @@ function Navbar() {
     return (
         <>
             {/* Start Navigation */}
-            <div className={ navbar ? "header  header-transparent change-logo  header-fixed  " :"header  header-transparent change-logo " }>
+            <div className={navbar ? "header  header-transparent change-logo  header-fixed  " : "header  header-transparent change-logo "}>
                 <div className="container">
                     <nav id="navigation" className="navigation navigation-landscape">
                         <div className="nav-header">
                             <a className="nav-brand static-logo" href="#">
-                                <img src="assets/img/logo-light.png" className="logo" alt="" />
+                                <img src="assets/img/logo.webp" className="logo" alt="" />
                             </a>
                             <a className="nav-brand fixed-logo" href="#">
-                                <img src="assets/img/logo.png" className="logo" alt="" />
+                                <img src="assets/img/logo2.webp" className="logo" alt="" />
                             </a>
                             <div className="nav-toggle" />
                             <div className="mobile_nav">
@@ -271,20 +271,20 @@ function Navbar() {
                                 </li>
                             </ul>
                             <ul class="nav-menu nav-menu-social align-to-right">
-								
-								<li class="_my_prt_list"><a href="#"><span>2</span>My List</a></li>
-								<li class="add-listing">
-									<a href="#" data-toggle="modal" data-target="#login" class="theme-cl">
-										 <i class="fas fa-sign-in-alt mr-1"></i>Sign In
-									</a>
-								</li>
-							</ul>
+
+                                <li class="_my_prt_list"><a href="#"><span>2</span>My List</a></li>
+                                <li class="add-listing">
+                                    <a href="#" data-toggle="modal" data-target="#login" class="theme-cl">
+                                        <i class="fas fa-sign-in-alt mr-1"></i>Sign In
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </nav>
                 </div>
             </div>
             {/* End Navigation */}
-           <div className="clearfix" />
+            <div className="clearfix" />
 
         </>
     )

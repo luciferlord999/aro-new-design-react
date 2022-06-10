@@ -4,6 +4,7 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import axios from 'axios';
 import BaseURL from "../Api/Api"
+import CategorySlider from '../Slider/CategorySlider';
 
 
 function Banner() {
@@ -66,7 +67,7 @@ function Banner() {
     return (
         <>
             {/* ============================ Hero Banner  Start================================== */}
-            <div className="image-cover hero_banner" style={{ background: 'url(http://testing.ro.digitalnawab.com/images/banner/aroBanner.webp) no-repeat' }} data-overlay={0}>
+            <div className="image-cover hero_banner " style={{ background: 'url(/assets/img/banner/banner.webp) no-repeat' }} data-overlay={4}>
                 <div className="container">
 
                     {/* Type */}
@@ -132,44 +133,10 @@ function Banner() {
             <section className="p-0">
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-xl-12 col-lg-12 col-md-12">
-                            <div className="_awards_group">
-                                <ul className="_awards_lists four">
-                                    <OwlCarousel className="slider-items owl-carousel " {...options}>
-                                        {/* single list */}
-                                        <li>
-                                            <div className="_awards_list_wrap">
-                                                <div className="_awards_list_thumb op-1"><img src="assets/img/aw-1.png" className="img-fluid" alt /></div>
-                                                <div className="_awards_list_caption">
-                                                    <h5>2021</h5>
-                                                    <span>Annual Awards</span>
-                                                </div>
-                                            </div>
-                                        </li><li>
-                                            <div className="_awards_list_wrap">
-                                                <div className="_awards_list_thumb op-1"><img src="assets/img/aw-1.png" className="img-fluid" alt /></div>
-                                                <div className="_awards_list_caption">
-                                                    <h5>2021</h5>
-                                                    <span>Annual Awards</span>
-                                                </div>
-                                            </div>
-                                        </li><li>
-                                            <div className="_awards_list_wrap">
-                                                <div className="_awards_list_thumb op-1"><img src="assets/img/aw-1.png" className="img-fluid" alt /></div>
-                                                <div className="_awards_list_caption">
-                                                    <h5>2021</h5>
-                                                    <span>Annual Awards</span>
-                                                </div>
-                                            </div>
-                                        </li>
+
+                        <CategorySlider />
 
 
-
-
-                                    </OwlCarousel>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -179,31 +146,7 @@ function Banner() {
                         <div className="col-xl-12 col-lg-12 col-md-12">
                             <div className="_awards_group">
                                 <ul className="_awards_lists four">
-                                    <OwlCarousel className="slider-items owl-carousel " {...options}>
-                                        {/* single list */}
-                                        {
-                                            serviceicon?.map((data , index)=>{
-                                                return(<li key={index}>
-                                                    <div className="_awards_list_wrap">
-                                                        <div className="_awards_list_thumb op-1">
-                                                            <img src={BaseURL+data?.service_img} className="img-fluid" alt /></div>
-                                                        <div className="_awards_list_caption">
-                                                            <h5>2021</h5>
-                                                            <span>Annual Awards</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-    )
-                                                
-                                            })
-                                        }
-                                       
-                                       
 
-
-
-
-                                    </OwlCarousel>
                                 </ul>
                             </div>
                         </div>
