@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import BestofferSlider from '../Slider/BestofferSlider';
 import Aplliances from '../Slider/Aplliances';
+import TopProduct from '../Slider/TopProduct';
 
 
 function Content() {
@@ -154,6 +155,7 @@ function Content() {
             <Aplliances />
 
             {/* Pagination */}
+            <TopProduct/>
 
 
             {/* ============================ Latest Property For Sale End ================================== */}
