@@ -4,6 +4,7 @@ import BassURl from "../Api/Api";
 import { useStateValue } from "../Context/StateProvider";
 import { actionType } from "../Context/reducer";
 
+
 function TopProduct() {
   // const[product , setProduct]= useState(null);
   // useEffect(()=>{
@@ -36,8 +37,11 @@ function TopProduct() {
     getData();
   }, []);
 
-  // Add to cart Function start
+  // add to cart  start
+  //  hide and show add to cart
   const [{ user, cartShow, cartShowToast, cartItems }, dispatch] = useStateValue();
+
+  // add to cart product show
   const [items, setItems] = useState([]);
   const addtocart = (dt) => {
     dispatch({
@@ -57,11 +61,47 @@ function TopProduct() {
     })
   }
 
+
+
   useEffect(() => {
     addtocart();
 
   }, [items]);
-  // Add to cart Function end
+
+  const [qtystyle, SetQtyStyle] = useState(false);
+
+  const toastShows = () => {
+    dispatch({
+      type: actionType.SET_CART_SHOW_TOAST,
+      cartShowToast: !cartShowToast
+    })
+
+  }
+  const [isActive, setIsActive] = useState(false);
+  const handleClick = (e) => {
+
+    console.log(e)
+
+    if(e === 1){
+      setButtonText("1");
+      setIsActive(current => !current);
+
+    }
+   
+
+
+  };
+
+  const text = "Add to cart";
+  const [buttonText, setButtonText] = useState(text)
+
+
+
+  // add to cart  end
+
+  // qty script start
+
+  // qty script end
 
 
 
@@ -84,6 +124,11 @@ function TopProduct() {
 
             {product &&
               product?.slice(0, 4).map((data, index) => {
+                {
+                  console.log(product.slice(0,4).length)
+                }
+
+                
                 return (
                   <div
                     className="col-xl-6 col-lg-12 col-md-12 col-sm-12"
@@ -176,16 +221,31 @@ function TopProduct() {
                             </div>
                           </div>
                           <div className="footer-flex">
-                            <a href="property-detail.html" className="prt-view"
+                            <button className="minusBtn prt-views" style={{ display: isActive ? "inline-block" : "none" }}>-</button>
+
+                            <button className="prt-view " id="mainBtn" key={index}
                               onClick={() => {
                                 setItems([...cartItems, data]);
-                                toastShow()
+                                toastShows();
+                               
+                                handleClick(data.length)
                               }
 
 
-                              }>
-                              ADD TO CART
-                            </a>
+                              }
+
+
+                              style={{ cursor: "pointer", boxShadow: "0px 5px 5px rgb(145,145,145" }}
+                            >
+                              {buttonText}
+                            </button>
+                            <button className="plusBtn prt-views" style={{ display: isActive ? "inline-block" : "none" }}>+</button>
+
+
+
+
+
+
                           </div>
                         </div>
                       </div>

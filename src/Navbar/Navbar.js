@@ -55,9 +55,9 @@ function Navbar() {
                                 <li className="active">
                                     <a href="/">
                                         Home
-                                        
+
                                     </a>
-                                 
+
                                 </li>
                                 <li>
                                     <a href="#">
@@ -249,10 +249,11 @@ function Navbar() {
                             </ul>
                             <ul className="nav-menu nav-menu-social align-to-right">
                                 {
-                                    cartItems && cartItems.length>0 &&(  <li className="_my_prt_list"><a ><span>{cartItems.length}</span>My Cart</a></li>)
+                                    cartItems && cartItems.length > 0 && (<li className="_my_prt_list"><a ><span>{cartItems.length}</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>)
+                                   
                                 }
 
-                              
+
                                 <li className="add-listing">
                                     <a href="#" data-toggle="modal" data-target="#login" class="theme-cl">
                                         <i className="fas fa-sign-in-alt mr-1"></i>Sign In

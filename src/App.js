@@ -4,6 +4,7 @@ import React from 'react'
 import Home from './Home/Home'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Service from './Pages/Service';
+import CartInfo from './Cart/CartInfo';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/service/:service_url" element={<Service />} />
+        <Route path="/cartinfo" element={<CartInfo/>}/>
         </Routes>
 
       </Router>

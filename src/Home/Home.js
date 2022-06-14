@@ -4,6 +4,7 @@ import Banner from '../Component/Banner'
 import Content from '../Component/Content'
 import Footer from '../Component/Footer'
 import { useStateValue } from '../Context/StateProvider'
+import CartInfo from '../Cart/CartInfo'
 
 function Home() {
     const [{ cartShow, cartShowA , cartShowToast }, dispatch] = useStateValue();
@@ -12,7 +13,7 @@ function Home() {
     useEffect(() => { }, [scrollValue, cartShow]);
     return (
         <>
-            <body class="yellow-skin">
+           
 
                 <div id="main-wrapper">
                     <Navbar />
@@ -20,12 +21,13 @@ function Home() {
                     <Banner />
                     <Content />
                     <Footer/>
+                    {cartShowToast && <CartInfo/>}
 
 
 
                 </div>
 
-            </body>
+          
         </>
 
     )
