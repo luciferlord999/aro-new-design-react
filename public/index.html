@@ -234,8 +234,8 @@
     }
 
     /* .owl-carousel-width{
-      margin-left: 90px !important;
-    } */
+          margin-left: 90px !important;
+        } */
     /* Owl carusole css ens */
 
     /* offer css start */
@@ -489,7 +489,7 @@
       flex-direction: column;
       position: fixed;
       top: 536px;
-      background: #f8fbfb;
+      background-image: linear-gradient(158deg, #80ced7, #6db5cd);
       right: 5px;
       width: 20%;
       height: 60px;
@@ -518,6 +518,100 @@
       border: none;
     }
     /* Add to cart With Qty Div end */
+
+    /* Page Appliance css start */
+    .PageAppImg {
+      max-height: 200px !important;
+      min-height: 200px !important;
+
+      display: block !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: 50% !important;
+    }
+
+    /* Page Appliance css end */
+
+    /* Add to cart New Css start */
+    .product-add {
+      width: 100%;
+      font-size: 15px;
+      padding: 6px 0px;
+      border-radius: 6px;
+      text-align: center;
+      text-transform: capitalize;
+      color: #39404a;
+      background: #e8e8e8;
+      /* text-shadow: var(-primary-tshadow); */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      transition: all linear 0.3s;
+      -webkit-transition: all linear 0.3s;
+      -moz-transition: all linear 0.3s;
+      -ms-transition: all linear 0.3s;
+      -o-transition: all linear 0.3s;
+    }
+
+    .product-add i {
+      font-size: 14px;
+      margin-right: 5px;
+    }
+
+    .product-action {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      /* display: none; */
+    }
+
+    .product-action button i {
+      width: 35px;
+      height: 35px;
+      font-size: 14px;
+      line-height: 35px;
+      border-radius: 6px;
+      text-align: center;
+      display: none;
+      color: #39404a;
+      background: #e8e8e8;
+      /* text-shadow: var(--primary-tshadow); */
+      transition: all linear 0.3s;
+      -webkit-transition: all linear 0.3s;
+      -moz-transition: all linear 0.3s;
+      -ms-transition: all linear 0.3s;
+      -o-transition: all linear 0.3s;
+    }
+
+    .product-action button i:hover {
+      color: #39404a;
+      background: #e8e8e8;
+    }
+
+    .product-action input {
+      width: 100%;
+      font-size: 15px;
+      margin: 0px 5px;
+      padding: 6px 0px;
+      border-radius: 6px;
+      text-align: center;
+      color: #39404a;
+      background: #e8e8e8;
+      /* text-shadow: var(--primary-tshadow); */
+    }
+    /* Add to cart New Css end */
   </style>
   <body>
     <!-- <div class="preloader"></div> -->
@@ -538,5 +632,26 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+
+    <script src="./vendor/jquery.min.js"></script>
+    <script>
+      $(".product-add").on("click", function () {
+        var e = $(this).next(".product-action");
+        $(this).hide(), e.css("display", "flex");
+      }),
+        $(".action-plus").on("click", function () {
+          var e = $(this)
+              .closest(".product-action")
+              .children(".action-input")
+              .get(0).value++,
+            c = $(this).closest(".product-action").children(".action-minus");
+          e > 0 && c.removeAttr("disabled");
+        }),
+        $(".action-minus").on("click", function () {
+          2 ==
+            $(this).closest(".product-action").children(".action-input").get(0)
+              .value-- && $(this).attr("disabled", "disabled");
+        });
+    </script>
   </body>
 </html>

@@ -5,6 +5,7 @@ import Navbar from '../Navbar/Navbar';
 import NavbarService from '../Navbar/NavbarService';
 import BassURl from '../Api/Api';
 import { Scrollbars } from 'react-custom-scrollbars';
+import Footer from '../Component/Footer';
 
 
 function Service() {
@@ -39,6 +40,57 @@ function Service() {
 
 
                     <NavbarService />
+                    {/* ============================ Hero Banner  Start================================== */}
+                    <div
+                        className="image-cover hero_banner "
+                        style={{ background: "url(/assets/img/banner/banner.webp) no-repeat" }}
+                        data-overlay={4}
+                    >
+                        <div className="container">
+                            {/* Type */}
+
+                            <div className="simple-search-wrap search-top-wrap  ">
+                                <div className="hero_search-2">
+                                    <div className="search_hero_wrapping">
+                                        {/* <div className="row">
+                                            <div className="col-lg-5 col-md-5 col-sm-12 small-padd">
+                                                <div className="form-group">
+                                                    <div className="input-with-icon">
+                                                        <input
+                                                            type="text"
+                                                            className="form-control b-0 b-r"
+                                                            placeholder="Neighborhood"
+                                                        />
+                                                        <i className="ti-search" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-5 col-md-4 col-sm-12 small-padd">
+                                                <div className="form-group">
+                                                    <div className="input-with-icon">
+                                                        <input
+                                                            type="text"
+                                                            className="form-control b-0"
+                                                            placeholder="Location"
+                                                        />
+                                                        <i className="ti-location-pin" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-2 col-md-3 col-sm-12 small-padd">
+                                                <div className="form-group">
+                                                    <a href="#" className="btn search-btn">
+                                                        Search
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div> */}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* ============================ Hero Banner End ================================== */}
 
                     {/* ============================ All Property ================================== */}
                     <section className="gray pt-4">
@@ -203,7 +255,7 @@ function Service() {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -215,7 +267,7 @@ function Service() {
                                     <div className="row justify-content-center">
                                         {/* Single Property */}
 
-                                        <Scrollbars style={{ height: '900px', width: "800px", scrollBehavior: "none" }}>
+                                        <Scrollbars style={{ height: '800px', width: "800px", scrollBehavior: "none" }}>
 
                                             {
                                                 product?.map((data, index) => {
@@ -281,7 +333,7 @@ function Service() {
 
                                                                 <div className="listing-detail-footer pl-0">
                                                                     <div className="footer-first">
-                                                                        <a href="tel:4048651904" className="call-view">
+                                                                        <a  className="call-view">
                                                                             ADD TO CART
                                                                         </a>
                                                                     </div>
@@ -313,6 +365,11 @@ function Service() {
                         </div>
                     </section>
                     {/* ============================ All Property ================================== */}
+
+
+
+
+
 
 
 

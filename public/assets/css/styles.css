@@ -8179,6 +8179,7 @@ span._list_blickes.types {
   align-items: center;
   justify-content: center;
   border: none;
+  cursor: pointer;
 }
 .call-view {
   padding: 4px 18px;

@@ -3,6 +3,18 @@ import axios from "axios";
 import BassURl from "../Api/Api";
 import { useStateValue } from "../Context/StateProvider";
 import { actionType } from "../Context/reducer";
+import $ from 'jquery';
+import Addtocartbutton from "./Addtocartbutton";
+import { motion } from "framer-motion";
+import { FaPlus } from 'react-icons/fa'
+import { FaMinus } from 'react-icons/fa';
+
+let itemQty = [];
+
+
+
+
+
 
 
 function TopProduct() {
@@ -19,6 +31,7 @@ function TopProduct() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [flag, setFlag] = useState(1);
   useEffect(() => {
     const getData = async () => {
       try {
@@ -42,33 +55,24 @@ function TopProduct() {
   const [{ user, cartShow, cartShowToast, cartItems }, dispatch] = useStateValue();
 
   // add to cart product show
-  const [items, setItems] = useState([]);
-  const addtocart = (dt) => {
-    dispatch({
-      type: actionType.SET_CARTITEMS,
-      cartItems: items,
-    });
 
 
+  const [isActive, setIsActive] = useState(false);
+  const [Addtocart, setAddToCart] = useState(true);
+  const [hidden, setHidden] = useState([]);
+  const handleClick = index => {
+    setHidden({ ...hidden, [index]: !hidden[index] });
+    setIsActive(current => !current);
+    // setAddToCart(current => !current);
+    setButtonText("1")
 
 
-    localStorage.setItem("cartItems", JSON.stringify(items));
-  };
-  const toastShow = () => {
-    dispatch({
-      type: actionType.SET_CART_SHOW_TOAST,
-      cartShowToast: !cartShowToast
-    })
   }
+  // const [{ user, cartShow, cartShowToast, cartItems }, dispatch] = useStateValue();
+  const [items, setItems] = useState([]);
 
 
-
-  useEffect(() => {
-    addtocart();
-
-  }, [items]);
-
-  const [qtystyle, SetQtyStyle] = useState(false);
+  // const [qtystyle, SetQtyStyle] = useState(false);
 
   const toastShows = () => {
     dispatch({
@@ -77,36 +81,85 @@ function TopProduct() {
     })
 
   }
-  const [isActive, setIsActive] = useState(false);
-  const handleClick = (e) => {
-
-    console.log(e)
-
-    if(e === 1){
-      setButtonText("1");
-      setIsActive(current => !current);
-
-    }
-   
 
 
-  };
+
+
+
+
+
+
 
   const text = "Add to cart";
   const [buttonText, setButtonText] = useState(text)
-
-
-
   // add to cart  end
 
   // qty script start
 
   // qty script end
 
-
-
-
   // console.log(x1);
+
+  // jquery
+  // api call
+
+
+  // qty function
+  const [qty, setqty] = useState(1);
+  const cartDispatch = () => {
+    localStorage.setItem("cartItems", JSON.stringify());
+    dispatch({
+      type: actionType.SET_CARTITEMS,
+      cartItems: itemQty,
+    });
+  };
+
+  const updateQty = (action, id) => {
+    if (action == "add") {
+      setqty(qty + 1);
+      cartItems.map((item) => {
+        if (item.id === id) {
+          item.vendor_id += 1;
+          setFlag(flag + 1);
+        }
+      });
+
+      cartDispatch();
+    } else {
+      //  inital state value is one so you need to check if 1 then remove it
+
+      if (qty == 1) {
+        itemQty = cartItems.filter((data) => data.id !== id);
+        setFlag(flag + 1);
+        cartDispatch();
+      } else {
+        setqty(qty - 1);
+        cartItems.map((data) => {
+          if (data.id === id) {
+            data.vendor_id -= 1;
+            setFlag(flag + 1);
+          }
+        });
+
+        cartDispatch();
+      }
+    }
+  };
+  useEffect(() => {
+    itemQty = cartItems;
+  }, [qty, itemQty]);
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
       {/* ============================ Latest Property For Sale Start ================================== */}
@@ -124,11 +177,7 @@ function TopProduct() {
 
             {product &&
               product?.slice(0, 4).map((data, index) => {
-                {
-                  console.log(product.slice(0,4).length)
-                }
 
-                
                 return (
                   <div
                     className="col-xl-6 col-lg-12 col-md-12 col-sm-12"
@@ -220,18 +269,137 @@ function TopProduct() {
                               </div>
                             </div>
                           </div>
+                          <div className="footer-flex" key={index}>
+                            {
+                              !!hidden[index] &&
+
+
+                              // <div className="qty-input">
+                              //   <button className="qty-count qty-count--minus" data-action="minus" type="button">-</button>
+                              //   <input className="product-qty" type="number" name="product-qty" min={0} max={10} defaultValue={qty} />
+                              //   <button className="qty-count qty-count--add" data-action="add" type="button">+</button>
+                              // </div>
+
+
+
+
+
+
+
+                              <motion.div
+
+
+                                initial={{ opacity: 0, x: 200 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 200 }}
+
+
+
+
+                                className="product-action" >
+                                <button className="action-minus" title="Quantity Minus"
+                                 onClick={() => updateQty("remove", data?.id)}
+
+                                >
+
+                                  <FaMinus />
+                                </button>
+                                <p>{qty}</p>
+                                {/* <input
+                                  className="action-input"
+                                  title="Quantity Number"
+                                  type="text"
+                                  name="quantity"
+                                  defaultValue={qty}
+                                /> */}
+                                <button className="action-plus" title="Quantity Plus"
+                                onClick={() => updateQty("add", data?.id)}
+
+                                >
+                                  <FaPlus />
+
+
+                                </button>
+                              </motion.div>
+                            }
+                            {
+                              !hidden[index] &&
+                              <motion.button whileTap={{ scale: "1" }} className="prt-view" title="Add to Cart"
+
+
+
+                                onClick={() => {
+                                  setItems([...cartItems, data]);
+                                  toastShows();
+                                  // setAddToCart(false)
+
+                                  handleClick(index)
+                                }
+                                }
+                              >
+                                <i className="fa fa-shopping-basket" />
+                                <span>Add to Cart</span>
+                              </motion.button>
+                            }
+
+
+
+
+
+
+
+
+
+
+
+
+                          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                           <div className="footer-flex">
+
+
+
+
+
+
+
+
+
+
+
+
+                            {/* {
+
+                            }
                             <button className="minusBtn prt-views" style={{ display: isActive ? "inline-block" : "none" }}>-</button>
+
+
 
                             <button className="prt-view " id="mainBtn" key={index}
                               onClick={() => {
                                 setItems([...cartItems, data]);
                                 toastShows();
-                               
-                                handleClick(data.length)
+
+                                handleClick(index)
                               }
-
-
                               }
 
 
@@ -239,13 +407,7 @@ function TopProduct() {
                             >
                               {buttonText}
                             </button>
-                            <button className="plusBtn prt-views" style={{ display: isActive ? "inline-block" : "none" }}>+</button>
-
-
-
-
-
-
+                            <button className="plusBtn prt-views" style={{ display: isActive ? "inline-block" : "none" }}>+</button> */}
                           </div>
                         </div>
                       </div>

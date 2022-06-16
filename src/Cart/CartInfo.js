@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { motion } from "framer-motion";
 import { useStateValue } from '../Context/StateProvider';
 import { actionType } from '../Context/reducer';
+import TopProduct from '../Slider/TopProduct';
+import Addtocartbutton from '../Slider/Addtocartbutton';
 
 function CartInfo() {
     const [{ user, cartShow, cartShowToast, cartItems }, dispatch] = useStateValue();
@@ -34,36 +36,41 @@ function CartInfo() {
 
 
                 className='toasting'><div className='container bg white'>
-                    <div className='row' style={{ maxWidth: "370px" }}>
-                        <div className='col-lg-6'><p
-                            whileTap={{ scale: "0.75" }}
-                            className=" hover:shadow-md "
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "0.5rem",
-                                padding: "0.25rem",
-                                paddingLeft: "0.5rem",
-                                paddingRight: "0.5rem",
-                                marginTop: "0.9rem",
-                                marginBottom: "0.rem",
+                     <div className='row' style={{ maxWidth: "370px" }}>
+                           
+                           <div className='col-lg-6'><p
+                               whileTap={{ scale: "0.75" }}
+                               className=" hover:shadow-md "
+                               style={{
+                                   display: "flex",
+                                   alignItems: "center",
+                                   gap: "0.5rem",
+                                   padding: "0.25rem",
+                                   paddingLeft: "0.5rem",
+                                   paddingRight: "0.5rem",
+                                   marginTop: "0.9rem",
+                                   marginBottom: "0.rem",
 
 
-                                color: "black",
+                                   color: "black",
 
-                                transitionDuration: " 100ms",
-                                transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
-                                transitionProperty: "all",
-                                transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
-                                transitionDuration: "150ms",
-                                fontSize: "1rem" /* 16px */,
-                                lineHeight: "1.5rem",
-                            }}
-                        // onClick={clearCart}
-                        >
-                            <div className='row'>
-                                <h6 class="listing-card-info-price mb-0">₹ &nbsp;8,399</h6>
-                            </div>
+                                   transitionDuration: " 100ms",
+                                   transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+                                   transitionProperty: "all",
+                                   transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+                                   transitionDuration: "150ms",
+                                   fontSize: "1rem" /* 16px */,
+                                   lineHeight: "1.5rem",
+
+                                   height: "40px",
+                                   marginTop: "10px"
+
+                               }}
+                           // onClick={clearCart}
+                           >
+                               <div className='row'>
+                                   <h6 class="listing-card-info-price mb-0">₹ &nbsp;8,399</h6>
+                               </div>
 
 
 
@@ -71,35 +78,36 @@ function CartInfo() {
 
 
 
-                        </p></div>
-                        <div className='col-lg-6'><motion.p whileTap={{ scale: "0.75" }}
-                            className=" hover:shadow-md "
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "0.5rem",
-                                padding: "0.25rem",
-                                paddingLeft: "0.5rem",
-                                paddingRight: "0.5rem",
-                                marginTop: "0.9rem",
-                                marginBottom: "0.rem",
-                                backgroundColor: "#0056b7",
-                                borderRadius: "0.375rem",
-                                color: "white",
-                                cursor: "pointer",
-                                transitionDuration: " 100ms",
-                                transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
-                                transitionProperty: "all",
-                                transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
-                                transitionDuration: "150ms",
-                                fontSize: "1rem" /* 16px */,
-                                lineHeight: "1.5rem",
-                            }}
+                           </p></div>
+                           <div className='col-lg-6'><motion.p whileTap={{ scale: "0.75" }}
+                               className=" hover:shadow-md "
+                               style={{
+                                   display: "flex",
+                                   alignItems: "center",
+                                   gap: "0.5rem",
+                                   padding: "0.25rem",
+                                   paddingLeft: "0.5rem",
+                                   paddingRight: "0.5rem",
+                                   marginTop: "0.9rem",
+                                   marginBottom: "0.rem",
+                                   backgroundColor: "#0056b7",
+                                   borderRadius: "0.375rem",
+                                   color: "white",
+                                   cursor: "pointer",
+                                   transitionDuration: " 100ms",
+                                   transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+                                   transitionProperty: "all",
+                                   transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+                                   transitionDuration: "150ms",
+                                   fontSize: "1rem" /* 16px */,
+                                   lineHeight: "1.5rem",
+                               }}
 
-                            onClick={toastShow}
-                        >View Cart</motion.p>
-                        </div>
-                    </div>
+                               onClick={toastShow}
+                           >View Cart</motion.p>
+                           </div>
+                       </div>
+
                 </div></motion.div>
 
         </>
