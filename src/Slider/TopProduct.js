@@ -8,6 +8,8 @@ import Addtocartbutton from "./Addtocartbutton";
 import { motion } from "framer-motion";
 import { FaPlus } from 'react-icons/fa'
 import { FaMinus } from 'react-icons/fa';
+import CartInfo from "../Cart/CartInfo";
+import { VscClose } from 'react-icons/vsc'
 
 let itemQty = [];
 
@@ -61,6 +63,9 @@ function TopProduct() {
   const [Addtocart, setAddToCart] = useState(true);
   const [hidden, setHidden] = useState([]);
   const handleClick = index => {
+
+
+    setHidden({ ...hidden, [index]: !hidden[index + 1] });
     setHidden({ ...hidden, [index]: !hidden[index] });
     setIsActive(current => !current);
     // setAddToCart(current => !current);
@@ -70,17 +75,34 @@ function TopProduct() {
   }
   // const [{ user, cartShow, cartShowToast, cartItems }, dispatch] = useStateValue();
   const [items, setItems] = useState([]);
+  // const [flag, setFlag] = useState(1);
 
 
   // const [qtystyle, SetQtyStyle] = useState(false);
 
-  const toastShows = () => {
+  const toastShow = () => {
     dispatch({
       type: actionType.SET_CART_SHOW_TOAST,
       cartShowToast: !cartShowToast
     })
-
   }
+  const addtocart = (dt) => {
+    dispatch({
+      type: actionType.SET_CARTITEMS,
+      cartItems: items,
+    });
+
+
+
+
+    localStorage.setItem("cartItems", JSON.stringify(items));
+  };
+
+  useEffect(() => {
+    addtocart();
+
+
+  }, [items]);
 
 
 
@@ -102,52 +124,10 @@ function TopProduct() {
 
   // jquery
   // api call
+  const [tot, setTot] = useState(0);
 
 
-  // qty function
-  const [qty, setqty] = useState(1);
-  const cartDispatch = () => {
-    localStorage.setItem("cartItems", JSON.stringify());
-    dispatch({
-      type: actionType.SET_CARTITEMS,
-      cartItems: itemQty,
-    });
-  };
 
-  const updateQty = (action, id) => {
-    if (action == "add") {
-      setqty(qty + 1);
-      cartItems.map((item) => {
-        if (item.id === id) {
-          item.vendor_id += 1;
-          setFlag(flag + 1);
-        }
-      });
-
-      cartDispatch();
-    } else {
-      //  inital state value is one so you need to check if 1 then remove it
-
-      if (qty == 1) {
-        itemQty = cartItems.filter((data) => data.id !== id);
-        setFlag(flag + 1);
-        cartDispatch();
-      } else {
-        setqty(qty - 1);
-        cartItems.map((data) => {
-          if (data.id === id) {
-            data.vendor_id -= 1;
-            setFlag(flag + 1);
-          }
-        });
-
-        cartDispatch();
-      }
-    }
-  };
-  useEffect(() => {
-    itemQty = cartItems;
-  }, [qty, itemQty]);
 
 
 
@@ -269,68 +249,46 @@ function TopProduct() {
                               </div>
                             </div>
                           </div>
+
+
                           <div className="footer-flex" key={index}>
+
+
                             {
-                              !!hidden[index] &&
+                              !!hidden[index] && (<>
 
-
-                              // <div className="qty-input">
-                              //   <button className="qty-count qty-count--minus" data-action="minus" type="button">-</button>
-                              //   <input className="product-qty" type="number" name="product-qty" min={0} max={10} defaultValue={qty} />
-                              //   <button className="qty-count qty-count--add" data-action="add" type="button">+</button>
-                              // </div>
-
-
-
-
-
-
-
-                              <motion.div
-
-
-                                initial={{ opacity: 0, x: 200 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: 200 }}
+                                <div className="row">
+                                  <VscClose style={{ cursor: "pointer", margin: "12px 12px" }}
+                                    className="product-qty" onClick={(e) => {
+                                      handleClick(index)
+                                    }} />
+                                  <Addtocartbutton key={data.id}
+                                    item={data}
+                                    setFlag={setFlag}
+                                    flag={flag}
 
 
 
 
-                                className="product-action" >
-                                <button className="action-minus" title="Quantity Minus"
-                                 onClick={() => updateQty("remove", data?.id)}
-
-                                >
-
-                                  <FaMinus />
-                                </button>
-                                <p>{qty}</p>
-                                {/* <input
-                                  className="action-input"
-                                  title="Quantity Number"
-                                  type="text"
-                                  name="quantity"
-                                  defaultValue={qty}
-                                /> */}
-                                <button className="action-plus" title="Quantity Plus"
-                                onClick={() => updateQty("add", data?.id)}
-
-                                >
-                                  <FaPlus />
 
 
-                                </button>
-                              </motion.div>
+                                  />
+                                </div>
+
+
+
+
+                              </>)
+
+
+
+
                             }
-                            {
-                              !hidden[index] &&
+                            {!hidden[index] &&
                               <motion.button whileTap={{ scale: "1" }} className="prt-view" title="Add to Cart"
-
-
-
-                                onClick={() => {
+                                onClick={(e) => {
                                   setItems([...cartItems, data]);
-                                  toastShows();
+                                  // toastShow();
                                   // setAddToCart(false)
 
                                   handleClick(index)
@@ -339,76 +297,13 @@ function TopProduct() {
                               >
                                 <i className="fa fa-shopping-basket" />
                                 <span>Add to Cart</span>
-                              </motion.button>
-                            }
-
-
-
-
-
-
-
-
-
-
-
+                              </motion.button>}
 
                           </div>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                          <div className="footer-flex">
-
-
-
-
-
-
-
-
-
-
-
-
-                            {/* {
-
-                            }
-                            <button className="minusBtn prt-views" style={{ display: isActive ? "inline-block" : "none" }}>-</button>
-
-
-
-                            <button className="prt-view " id="mainBtn" key={index}
-                              onClick={() => {
-                                setItems([...cartItems, data]);
-                                toastShows();
-
-                                handleClick(index)
-                              }
-                              }
-
-
-                              style={{ cursor: "pointer", boxShadow: "0px 5px 5px rgb(145,145,145" }}
-                            >
-                              {buttonText}
-                            </button>
-                            <button className="plusBtn prt-views" style={{ display: isActive ? "inline-block" : "none" }}>+</button> */}
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -416,8 +311,10 @@ function TopProduct() {
                 );
               })}
           </div>
+          {/* {cartShowToast && <CartInfo flag={flag}  tot={tot} setTot={setTot} />} */}
         </div>
       </section>
+
       {/* ============================ Latest Property For Sale End ================================== */}
     </>
   );

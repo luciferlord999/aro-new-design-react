@@ -8248,6 +8248,10 @@ ul.selio_style li .prt_saveed_12lk .toggler {
 }
 .property-listing.property-2 .listing-name .prt-link-detail {
   position: relative;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
 }
 
 .list-img-slide .slick-dots li {

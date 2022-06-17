@@ -1,9 +1,18 @@
 import React, { useState } from 'react'
+import { actionType } from '../Context/reducer';
 import { useStateValue } from '../Context/StateProvider';
 
 function Navbar() {
     const [navbar, setNavbar] = useState(false);
     const [{ user, cartShow, cartShowToast, cartItems }, dispatch] = useStateValue();
+    // const [{ user, cartShow, cartShowToast, cartItems }, dispatch] = useStateValue();
+    const showCart = () => {
+        dispatch({
+            type: actionType.SET_CART_SHOW,
+            cartShow: !cartShow,
+        });
+    };
+
 
 
 
@@ -64,194 +73,24 @@ function Navbar() {
                                         Listings
                                         <span className="submenu-indicator" />
                                     </a>
-                                    <ul className="nav-dropdown nav-submenu">
-                                        <li>
-                                            <a href="#">
-                                                Listing Grid
-                                                <span className="submenu-indicator" />
-                                            </a>
-                                            <ul className="nav-dropdown nav-submenu">
-                                                <li>
-                                                    <a href="grid-layout-with-sidebar.html">Grid Style 1</a>
-                                                </li>
-                                                <li>
-                                                    <a href="grid-layout-2.html">Grid Style 2</a>
-                                                </li>
-                                                <li>
-                                                    <a href="grid-layout-3.html">Grid Style 3</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                Listing List
-                                                <span className="submenu-indicator" />
-                                            </a>
-                                            <ul className="nav-dropdown nav-submenu">
-                                                <li>
-                                                    <a href="list-layout-with-sidebar.html">List Style 1</a>
-                                                </li>
-                                                <li>
-                                                    <a href="list-layout-with-map-2.html">List Style 2</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                Listing Map
-                                                <span className="submenu-indicator" />
-                                            </a>
-                                            <ul className="nav-dropdown nav-submenu">
-                                                <li>
-                                                    <a href="half-map.html">Half Map</a>
-                                                </li>
-                                                <li>
-                                                    <a href="half-map-2.html">Half Map 2</a>
-                                                </li>
-                                                <li>
-                                                    <a href="classical-layout-with-map.html">
-                                                        Classical With Sidebar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="list-layout-with-map.html">List Sidebar Map</a>
-                                                </li>
-                                                <li>
-                                                    <a href="grid-layout-with-map.html">Grid Sidebar Map</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                Agents View
-                                                <span className="submenu-indicator" />
-                                            </a>
-                                            <ul className="nav-dropdown nav-submenu">
-                                                <li>
-                                                    <a href="agents.html">Agent Grid Style</a>
-                                                </li>
-                                                <li>
-                                                    <a href="agents-2.html">Agent Grid 2</a>
-                                                </li>
-                                                <li>
-                                                    <a href="agent-page.html">Agent Detail Page</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                Agency View
-                                                <span className="submenu-indicator" />
-                                            </a>
-                                            <ul className="nav-dropdown nav-submenu">
-                                                <li>
-                                                    <a href="agencies.html">Agency Grid Style</a>
-                                                </li>
-                                                <li>
-                                                    <a href="agency-page.html">Agency Detail Page</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+
                                 </li>
                                 <li>
                                     <a href="#">
                                         Property
                                         <span className="submenu-indicator" />
                                     </a>
-                                    <ul className="nav-dropdown nav-submenu">
-                                        <li className="">
-                                            <a href="#">
-                                                User Admin
-                                                <span className="submenu-indicator" />
-                                            </a>
-                                            <ul className="nav-dropdown nav-submenu">
-                                                <li>
-                                                    <a href="dashboard.html">User Dashboard</a>
-                                                </li>
-                                                <li>
-                                                    <a href="my-profile.html">My Profile</a>
-                                                </li>
-                                                <li>
-                                                    <a href="my-property.html">My Property</a>
-                                                </li>
-                                                <li>
-                                                    <a href="messages.html">Messages</a>
-                                                </li>
-                                                <li>
-                                                    <a href="bookmark-list.html">Bookmark Property</a>
-                                                </li>
-                                                <li>
-                                                    <a href="submit-property.html">Submit Property</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                Single Property
-                                                <span className="submenu-indicator" />
-                                            </a>
-                                            <ul className="nav-dropdown nav-submenu">
-                                                <li>
-                                                    <a href="single-property-1.html">Single Property 1</a>
-                                                </li>
-                                                <li>
-                                                    <a href="single-property-2.html">Single Property 2</a>
-                                                </li>
-                                                <li>
-                                                    <a href="single-property-3.html">Single Property 3</a>
-                                                </li>
-                                                <li>
-                                                    <a href="single-property-4.html">Single Property 4</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="compare-property.html">Compare Property</a>
-                                        </li>
-                                    </ul>
+
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        Pages
-                                        <span className="submenu-indicator" />
-                                    </a>
-                                    <ul className="nav-dropdown nav-submenu">
-                                        <li>
-                                            <a href="blog.html">Blog Style</a>
-                                        </li>
-                                        <li>
-                                            <a href="about-us.html">About Us</a>
-                                        </li>
-                                        <li>
-                                            <a href="pricing.html">Pricing</a>
-                                        </li>
-                                        <li>
-                                            <a href="404.html">404 Page</a>
-                                        </li>
-                                        <li>
-                                            <a href="checkout.html">Checkout</a>
-                                        </li>
-                                        <li>
-                                            <a href="contact.html">Contact</a>
-                                        </li>
-                                        <li>
-                                            <a href="component.html">Elements</a>
-                                        </li>
-                                        <li>
-                                            <a href="privacy.html">Privacy Policy</a>
-                                        </li>
-                                        <li>
-                                            <a href="faq.html">FAQs</a>
-                                        </li>
-                                    </ul>
-                                </li>
+
                             </ul>
                             <ul className="nav-menu nav-menu-social align-to-right">
-                                {
-                                    cartItems && cartItems.length > 0 && (<li className="_my_prt_list"><a ><span>{cartItems.length}</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>)
-                                   
-                                }
+                                <li className="_my_prt_list"><a >
+                                    {
+                                        cartItems && cartItems.length > 0 && (<span>{cartItems.length}</span>)
+
+                                    }
+                                    <i class="fa fa-shopping-cart" aria-hidden="true" onClick={showCart} style={{ cursor: "pointer" }}></i></a></li>
 
 
                                 <li className="add-listing">

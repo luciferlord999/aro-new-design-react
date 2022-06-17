@@ -95,13 +95,13 @@ function PageAppliances() {
                                 <div className="col-lg-3 col-md-6 col-sm-12  col-sm-6">
                                     <ul className="shorting_grid">
                                         <li className="list-inline-item">
-                                            <a href="grid-layout-with-sidebar.html" className="active">
+                                            <a className="active">
                                                 <span className="ti-layout-grid2" />
-                                                Grid
+                                                Service
                                             </a>
                                         </li>
                                         <li className="list-inline-item">
-                                            <a href="list-layout-with-sidebar.html">
+                                            <a>
                                                 <span className="ti-view-list" />
                                                 List
                                             </a>
@@ -360,7 +360,7 @@ function PageAppliances() {
                                                                     <div className="_card_list_flex mb-2">
                                                                         <div className="_card_flex_01">
                                                                             <span className="_list_blickes _netork">6 Litre</span>
-                                                                         
+
                                                                         </div>
                                                                         <div className="_card_flex_last">
                                                                             <div className="prt_saveed_12lk">
@@ -376,9 +376,9 @@ function PageAppliances() {
                                                                             <h4 className="listing-name verified">
                                                                                 <a
                                                                                     href="single-property-1.html"
-                                                                                    className="prt-link-detail"
+                                                                                    className="prt-link-detail linehidethree"
                                                                                 >
-                                                                                    7012 Shine Sehu Street, Liverpool London, LC345AC
+                                                                                    {data?.product_title}
                                                                                 </a>
                                                                             </h4>
                                                                         </div>
@@ -409,33 +409,133 @@ function PageAppliances() {
                                                             </div> */}
                                                             <div className="listing-detail-footer">
                                                                 <div className="footer-first">
-                                                                    <h6 className="listing-card-info-price mb-0 p-0">$7,000</h6>
+                                                                    <h6 className="listing-card-info-price mb-0 p-0">₹ {data?.product_price}</h6>
                                                                 </div>
                                                                 <div className="footer-flex">
-                                                                    <a href="property-detail.html" className="prt-view">
-                                                                        View Detail
-                                                                    </a>
+
+
+
+
+
+                                                                    <button className="prt-view"
+
+                                                                    >
+                                                                        Buy
+                                                                    </button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     {/* End Single Property */}
 
+
+                                                    <div className="modal fade in" id={`myModal` + index}>
+                                                        <div className="modal-dialog modal-dialog-centered">
+                                                            <div className="modal-content">
+                                                                {/* Modal Header */}
+                                                                <div className="modal-header">
+                                                                    <h4 className="modal-title">Modal Heading</h4>
+                                                                    <button type="button" className="close" data-dismiss="modal">
+                                                                        ×
+                                                                    </button>
+                                                                </div>
+                                                                {/* Modal body */}
+                                                                <div className="modal-body">Modal body..</div>
+                                                                {/* Modal footer */}
+                                                                <div className="modal-footer">
+                                                                    <button
+                                                                        type="button"
+                                                                        className="btn btn-secondary"
+                                                                        data-dismiss="modal"
+                                                                    >
+                                                                        Close
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
                                                 </>)
                                             })
                                         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                         {/* Single Property */}
+
+
+
+                                        {
+                                            appliancesProdduct?.map((data, index) => {
+                                                return (<>
+
+
+
+
+
+
+
+
+
+                                                </>)
+
+                                            })
+                                        }
+
+
 
                                     </div>
                                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                             )
                         }
 
                     </div>
+
                 </div>
             </section>
+
+
             {/* ============================ All Property ================================== */}
 
 

@@ -5,6 +5,7 @@ import Content from '../Component/Content'
 import Footer from '../Component/Footer'
 import { useStateValue } from '../Context/StateProvider'
 import CartInfo from '../Cart/CartInfo'
+import CartItem from '../Cart/CartItem'
 
 function Home() {
     const [{ cartShow, cartShowA , cartShowToast }, dispatch] = useStateValue();
@@ -21,7 +22,9 @@ function Home() {
                     <Banner />
                     <Content />
                     <Footer/>
-                    {cartShowToast && <CartInfo/>}
+                    {/* {cartShowToast && <CartInfo />} */}
+                    {cartShow && <CartItem />}
+                    
 
 
 

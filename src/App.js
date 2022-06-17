@@ -18,7 +18,7 @@ function App() {
         <Route path="/service/:service_url" element={<Service />} />
         <Route path="/appliances/:category_url" element={<PageAppliances />} />
         <Route path="/cartinfo" element={<CartInfo/>}/>
-        <Route path="/bsgg" element={<Addtocartbutton/>}/>
+      
         </Routes>
 
       </Router>
