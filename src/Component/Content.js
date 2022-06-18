@@ -15,7 +15,7 @@ function Content() {
     const [appliances, setAppliances] = useState([]);
     useEffect(() => {
         axios.get(`web-api/all-shop-category`).then((response) => {
-            setService(response.data.data)
+            setAppliances(response.data.data)
         })
     }, []);
 
@@ -190,8 +190,10 @@ function Content() {
 
 
             {/* ============================ Latest Property For Sale Start ================================== */}
+           
 
             <Aplliances />
+           
 
 
 

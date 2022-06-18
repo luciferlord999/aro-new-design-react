@@ -4,6 +4,8 @@ import BassURl from '../Api/Api';
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+import Slider from 'react-slick';
+
 
 
 function Aplliances() {
@@ -22,6 +24,21 @@ function Aplliances() {
     }, []);
 
     // console.log(appliances)
+    const settings = {
+        arrows: true,
+        centerMode: true,
+        edgeFriction: 1,
+        infinite: false,
+        swipeToSlide: true,
+        variableWidth: true,
+        accessibility: true,
+        // prevArrow: <SlickArrowLeft />,
+        // nextArrow: <SlickArrowRight />,
+        focusOnSelect: true,
+        draggable: true
+
+        // afterChange: this.nextClick
+    };
 
 
 
@@ -76,85 +93,63 @@ function Aplliances() {
                         </div>
                     </div>
                     <div className="row justify-content-center">
-                        {/* Single Property */}
 
-                        {appliances && (<OwlCarousel className="slider-items owl-carousel owl-carousel-width  " {...options}>
+
+                        <OwlCarousel
+                            {...options}
+                            className="slider-items owl-theme owl-carousel  "
+                        >
+
                             {
-                                appliances.map((data, index) => {
-                                    return (
 
-
-
-
-
-                                        <>
-                                            {console.log(data)}
-
-                                            <div className="col-lg-4 col-md-6 col-sm-12" key={index} style={{ marginLeft: "70px" }}>
-                                                <div className="property-listing property-2 appliances-center  our-appliances-border">
-                                                    <div className="listing-img-wrapper">
-                                                        {/* <div className="_exlio_125">For Sale</div> */}
-                                                        <div className="list-img-slide">
-                                                            <div className="click">
-                                                                <div><a href="single-property-1.html"><img src={BassURl + data?.image} className="img-fluid mx-auto" alt /></a></div>
-                                                                {/* <div><a href="single-property-1.html"><img src="assets/img/p-2.png" className="img-fluid mx-auto" alt /></a></div> */}
-                                                                {/* <div><a href="single-property-1.html"><img src="assets/img/p-3.png" className="img-fluid mx-auto" alt /></a></div> */}
-                                                            </div>
-                                                        </div>
+                                (
+                                    appliances?.map((data, index) => {
+                                        return (
+                                            <>
+                                                <div className="cardtr" key={index}>
+                                                    <div className="card-headertr">
+                                                        <img src={BassURl + data?.image} alt="user" />
                                                     </div>
-                                                    <div className="listing-detail-wrapper">
-                                                        <div className="listing-short-detail-wrap">
-                                                            <div className="_card_list_flex mb-2">
-                                                                {/* <div className="_card_flex_01">
-                                                              <span className="_list_blickes _netork">6 Network</span>
-                                                              <span className="_list_blickes types">Family</span>
-                                                          </div> */}
-                                                                {/* <div className="_card_flex_last">
-                                                              <div className="prt_saveed_12lk">
-                                                                  <label className="toggler toggler-danger"><input type="checkbox" /><i className="ti-heart" /></label>
-                                                              </div>
-                                                          </div> */}
+                                                    <div className="card-bodytr">
+
+
+                                                        <h5 className='Heading-6' style={{ textTransform: " uppercase" }}>
+                                                            {data?.category_title}
+                                                        </h5>
+
+
+
+
+                                                        <div className="usertr">
+                                                            &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;
+                                                            <div className="user-infotr">
+                                                                <a href="/our-apliances/air-purifier">View </a>
                                                             </div>
-                                                            <div className="_card_list_flex">
-                                                                <div className="_card_flex_01">
-                                                                    <h4 className="listing-name verified" style={{ textAlign: "center" }}><a href="single-property-1.html" className="prt-link-detail" style={{ textTransform: " uppercase" }}>{data?.category_title}</a></h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    {/* <div className="price-features-wrapper">
-                                                  <div className="list-fx-features">
-                                                      <div className="listing-card-info-icon">
-                                                          <div className="inc-fleat-icon"><img src="assets/img/bed.svg" width={13} alt /></div>3 Beds
-                                                      </div>
-                                                      <div className="listing-card-info-icon">
-                                                          <div className="inc-fleat-icon"><img src="assets/img/bathtub.svg" width={13} alt /></div>1 Bath
-                                                      </div>
-                                                      <div className="listing-card-info-icon">
-                                                          <div className="inc-fleat-icon"><img src="assets/img/move.svg" width={13} alt /></div>800 sqft
-                                                      </div>
-                                                  </div>
-                                              </div> */}
-                                                    <div className="listing-detail-footer">
-                                                        {/* <div className="footer-first">
-                                                      <h6 className="listing-card-info-price mb-0 p-0">$7,000</h6>
-                                                  </div> */}
-                                                        <div className="footer-flex    " style={{ margin: 'auto', width: "70%", padding: "0px" }}>
-                                                            <a href={`/appliances/${data?.category_url}`} className="prt-view">View Detail</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </>)
-                                })
+                                            </>
+                                        )
+                                    }))
+
+
+
+
+
+
+
+
                             }
 
-                        </OwlCarousel>)
+
+
+
+                        </OwlCarousel>
 
 
 
 
-                        }
+
 
 
 

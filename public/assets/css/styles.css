@@ -7550,7 +7550,7 @@ a.filter_links {
 
 /*------------ Property Style: Classic Style Real Estate -----------*/
 .property_item {
-    background: #107cc4;
+  background: #107cc4;
   position: relative;
   border-radius: 6px;
   overflow: hidden;
@@ -7967,9 +7967,9 @@ span._list_blickes {
   border-radius: 4px;
 }
 span._list_blickes._netork {
-    background: rgb(16 124 196 / 24%);
-    color: #107cc4;
-    border: 1px solid blue;
+  background: rgb(16 124 196 / 24%);
+  color: #107cc4;
+  border: 1px solid blue;
 }
 span._list_blickes.types {
   background: rgba(37, 181, 121, 0.1);
@@ -7987,7 +7987,7 @@ span._list_blickes.types {
   font-weight: 700;
   position: relative;
   font-size: 22px;
-  
+
   color: #000000;
   line-height: 1.4;
   padding-left: 0.35em;
@@ -8170,7 +8170,7 @@ span._list_blickes.types {
 }
 .footer-flex .prt-view {
   padding: 4px 18px;
-  color: #ffffff !important;
+  color: #ffffff;
   background: #107cc4;
   border-radius: 0.2rem;
   height: 42px;
@@ -8315,6 +8315,7 @@ a._calss_tyui {
   padding: 0.8rem;
   display: flex;
   align-items: flex-start;
+  border: 1px solid #107cc4;
 }
 .property-listing.list_view .listing-img-wrapper {
   flex: 1;
@@ -8343,7 +8344,11 @@ a._calss_tyui {
 .property-listing.list_view .listing-name {
   font-size: 15px;
   line-height: 1.4;
-  max-width: 375px;
+  max-width: 344px;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
 }
 .property-listing.list_view .price-features-wrapper {
   padding: 0.1rem 0rem 0.6rem;

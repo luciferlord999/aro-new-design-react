@@ -3,6 +3,11 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import BassURl from '../Api/Api';
 import Navbar from '../Navbar/Navbar';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import { Modal, Button } from 'react-bootstrap';
+
+// or less ideally
+// import { Button } from 'react-bootstrap';
 
 
 function PageAppliances() {
@@ -26,7 +31,13 @@ function PageAppliances() {
         axios.get(`/web-api/top-product`).then((response) => {
             setAppliancesProduct(response.data.data)
         })
-    })
+    });
+
+    // make modal state start
+    // const [show, setShow] = useState(False);
+    // const handleClose = () => setShow(False);
+    // const handleShow = () => setShow(True);
+    // make modal state end
 
 
 
@@ -336,7 +347,7 @@ function PageAppliances() {
                                             appliancesProdduct?.map((data, index) => {
                                                 return (<>
                                                     {/* Single Property */}
-                                                    <div className="col-lg-6 col-md-6 col-sm-12">
+                                                    <div className="col-lg-6 col-md-6 col-sm-12" key={index}>
                                                         <div className="property-listing property-2">
                                                             <div className="listing-img-wrapper">
                                                                 {/* <div className="_exlio_125">For Sale</div> */}
@@ -420,40 +431,49 @@ function PageAppliances() {
                                                                     <button className="prt-view"
 
                                                                     >
-                                                                        Buy
+                                                                        View Details
                                                                     </button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     {/* End Single Property */}
+                                                    {/* {
+                                                        appliancesProdduct && (
+                                                            appliancesProdduct?.map((data, index) => {
+                                                                <Modal show={show} onHide={handleClose} centered>
+                                                                    <Modal.Header closeButton>
+                                                                        <Modal.Title>Modal heading</Modal.Title>
+                                                                    </Modal.Header>
+                                                                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                                                                    <Modal.Footer>
+                                                                        <Button variant="secondary" onClick={handleClose}>
+                                                                            Close
+                                                                        </Button>
+                                                                        <Button variant="primary" onClick={handleClose}>
+                                                                            Save Changes
+                                                                        </Button>
+                                                                    </Modal.Footer>
+                                                                </Modal>
 
 
-                                                    <div className="modal fade in" id={`myModal` + index}>
-                                                        <div className="modal-dialog modal-dialog-centered">
-                                                            <div className="modal-content">
-                                                                {/* Modal Header */}
-                                                                <div className="modal-header">
-                                                                    <h4 className="modal-title">Modal Heading</h4>
-                                                                    <button type="button" className="close" data-dismiss="modal">
-                                                                        ×
-                                                                    </button>
-                                                                </div>
-                                                                {/* Modal body */}
-                                                                <div className="modal-body">Modal body..</div>
-                                                                {/* Modal footer */}
-                                                                <div className="modal-footer">
-                                                                    <button
-                                                                        type="button"
-                                                                        className="btn btn-secondary"
-                                                                        data-dismiss="modal"
-                                                                    >
-                                                                        Close
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
+
+
+
+
+
+
+
+
+
+                                                            })
+                                                        )
+
+                                                    } */}
+
+
+
 
 
 

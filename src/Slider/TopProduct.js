@@ -202,6 +202,19 @@ function TopProduct() {
                       <div className="list_view_flex">
                         <div className="listing-detail-wrapper mt-1">
                           <div className="listing-short-detail-wrap">
+
+                            <div className="_card_list_flex">
+                              <div className="_card_flex_01">
+                                <h4 className="listing-name verified">
+                                  <a
+                                    href="single-property-1.html"
+                                    className="prt-link-detail"
+                                  >
+                                    {data?.product_title}
+                                  </a>
+                                </h4>
+                              </div>
+                            </div>
                             <div className="_card_list_flex mb-2">
                               <div className="_card_flex_01">
                                 <span className="_list_blickes _netork">
@@ -219,18 +232,6 @@ function TopProduct() {
                                       ","
                                     )}
                                 </h6>
-                              </div>
-                            </div>
-                            <div className="_card_list_flex">
-                              <div className="_card_flex_01">
-                                <h4 className="listing-name verified">
-                                  <a
-                                    href="single-property-1.html"
-                                    className="prt-link-detail"
-                                  >
-                                    {data?.product_title}
-                                  </a>
-                                </h4>
                               </div>
                             </div>
                           </div>

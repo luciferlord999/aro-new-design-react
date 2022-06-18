@@ -1,11 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function NavbarService() {
+
+    const [navbar, setNavbar] = useState(false);
+
+    const changeHeader = () => {
+        if (window.scrollY >= 50) {
+            setNavbar(true)
+        }
+        else {
+            setNavbar(false)
+        }
+    }
+
+    window.addEventListener('scroll', changeHeader);
+
+
+
+
+
+
+
+
     return (
         <>
 
             {/* Start Navigation */}
-            <div className="header header-light">
+            <div className={navbar ? "header  header-transparent change-logo  header-fixed  " : "header  header-transparent change-logo "}>
                 <div className="container">
                     <nav id="navigation" className="navigation navigation-landscape">
                         <div className="nav-header">

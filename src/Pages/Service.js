@@ -6,6 +6,7 @@ import NavbarService from '../Navbar/NavbarService';
 import BassURl from '../Api/Api';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Footer from '../Component/Footer';
+import parse from 'html-react-parser';
 
 
 function Service() {
@@ -26,6 +27,16 @@ function Service() {
             setProduct(response.data.data)
         })
     }, [])
+
+
+    const options = {
+        replace: (domNode) => {
+          if (domNode.attribs && domNode.attribs.class === "remove") {
+            return <></>;
+          }
+        },
+      };
+    
 
 
 
@@ -328,12 +339,33 @@ function Service() {
                                                                                 </h4>
                                                                             </div>
                                                                         </div>
+                                                                        <div className="_card_list_flex">
+                                                                            <div className="_card_flex_01">
+                                                                                <p className="listing-name verified">
+                                                                                    {parse(data?.product_description,options)}
+
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="footer-first">
+                                                                    <div className="foot-rates">
+                                                                        <span className="elio_rate good">4.2</span>
+                                                                        <div className="_rate_stio">
+                                                                            <i className="fa fa-star" />
+                                                                            <i className="fa fa-star" />
+                                                                            <i className="fa fa-star" />
+                                                                            <i className="fa fa-star" />
+                                                                            <i className="fa fa-star" />
+                                                                        </div>
                                                                     </div>
                                                                 </div>
 
                                                                 <div className="listing-detail-footer pl-0">
+
                                                                     <div className="footer-first">
-                                                                        <a  className="call-view">
+                                                                        <a className="call-view">
                                                                             ADD TO CART
                                                                         </a>
                                                                     </div>
